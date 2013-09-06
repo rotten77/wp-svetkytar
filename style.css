@@ -1,0 +1,35 @@
+/*
+Theme Name: SvětKytar.cz
+Theme URI: http://www.svetkytar.cz/
+Description: Šablona pro SvětKytar.cz
+Author: Jan Zatloukal
+Author URI: http://rotten77.cz/
+Version: 0.1
+Tags: responsive, bootstrap
+
+License: Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
+License URI: http://creativecommons.org/licenses/by-sa/3.0/
+
+Šablona pro SvětKytar.cz
+*/
+@import url('bootstrap/css/bootstrap.min.css');
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700&subset=latin,latin-ext);
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+.carousel-inner .carousel-caption {
+	background: #000;
+	text-align:left;
+	right: 10%;
+	left: 10%;
+}
+.carousel-inner .carousel-caption h3 {
+	margin-top:0;
+	margin-left:12px;
+	margin-right:12px;
+}
+.carousel-inner .carousel-caption p {
+	margin-top:0;
+	margin-left:12px;
+	margin-right:12px;
+}
