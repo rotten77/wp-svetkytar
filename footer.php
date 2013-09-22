@@ -8,6 +8,11 @@
 </div>
 	<script src="<?php echo bloginfo('stylesheet_directory'); ?>/bootstrap/js/jquery.js"></script>
 	<script src="<?php echo bloginfo('stylesheet_directory'); ?>/bootstrap/js/bootstrap.min.js"></script>
+<script>
+$(function(){
+	// $('.ttip').tooltip();
+});
+</script>
 	<?php wp_footer(); ?>
 	</body>
 </html>

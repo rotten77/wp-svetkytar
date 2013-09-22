@@ -4,7 +4,9 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title><?php wp_title( '|', true, 'right' ); ?><?php bloginfo('title');?></title>
-		<link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet">
+		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/icons/style.css" />
+		<!--[if lte IE 7]><script src="<?php bloginfo('stylesheet_directory'); ?>/icons/lte-ie7.js"></script><![endif]-->
+		<link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet" />
 		<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -12,11 +14,13 @@
 		<?php wp_head(); ?>
 </head>
 <body>
+<div id="header">
 <div class="container">
 	<div class="row">
 		<div class="col-md-4"><a href="<?php bloginfo('url');?>/"><img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/svet-kytar.png" alt="Svět kytar"></a></div>
 		<div class="col-md-8">REKLAMA</div>
 	</div>
+</div>
 </div>
 
 <div class="container">

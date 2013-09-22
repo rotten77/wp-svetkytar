@@ -1,55 +1,204 @@
 <div class="container">
-		<!-- vybrané příspěvky -->
-	<div class="row">
-	<div class="col-md-8">
-	<h2>Vybrané</h2>
+
 	<?php query_posts('meta_key=sk_vybrane&meta_value=1&posts_per_page=5&paged=1'); ?>
 	<?php if(have_posts()): ?>
-	<div id="carousel-example-generic" class="carousel slide">
 
-	<?php $carousel = $wp_query->post_count; ?>
-		<ol class="carousel-indicators">
-			<?php for($i=0;$i<$carousel;$i++) { ?>
-			<li data-target="#carousel-example-generic" data-slide-to="<?php echo $i; ?>"<?php if($i==0) echo ' class="active"'; ?>></li>
-			<?php } ?>
-		</ol>
+
+	<?php
+		$i=0;
+		// $carousel = $wp_query->post_count;
+	?>
+
+<div class="row">
+	<?php
+	while(have_posts()) : the_post();
+	$i++;
+	?>
 	
-		<div class="carousel-inner">
-			<?php
-			$first = true;
-			while(have_posts()) : the_post(); ?>
-			
-				<?php $excludePosts[] = $post->ID; ?>
-			
-				<div class="item<?php if($first) echo ' active'; ?>">
-					<a href="<?php the_permalink(); ?>"><img src="<?php echo sk_thumb(get_post_thumbnail_id($post->ID)); ?>" alt="<?php the_title(); ?>" /></a>
-					<div class="carousel-caption">
+		<?php if($i==1): ?>
+		
+			<div class="col-md-8">
+				<div class="post-box">
+					
+					<div class="post-box-image"><a href="<?php the_permalink(); ?>"><img src="<?php echo sk_thumb(get_post_thumbnail_id($post->ID), 760, 435); ?>" alt="<?php the_title(); ?>" class="img-responsive" /></a></div>
+					<div class="post-box-content">
 						<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-						<p><?php the_excerpt(); ?></p>
+						<p><?php
+						$perex = get_the_excerpt();
+						// $perex = short_text($perex);
+						echo $perex;
+						?></p>
+						<p><small><?php echo get_the_date('d. m. Y').", autor: <strong>".get_the_author()."</strong>, kategorie: "; the_category(', ');?></small></p>
 					</div>
 				</div>
-			
-			<?php
-			$first = false;
-			endwhile;?>
-		</div>
+			</div>
+		
+		<?php endif; ?>
 
-		<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"><span class="icon-prev"></span></a>
-		<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"><span class="icon-next"></span></a>
-	</div>
+
+		<?php if($i==2): ?>
+		
+			<div class="col-md-4">
+				<div class="post-box post-box-second">
+					
+					<div class="post-box-image"><a href="<?php the_permalink(); ?>"><img src="<?php echo sk_thumb(get_post_thumbnail_id($post->ID)); ?>" alt="<?php the_title(); ?>" class="img-responsive" /></a></div>
+					<div class="post-box-content">
+						<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+						<!--<p><?php
+						$perex = get_the_excerpt();
+						echo short_text($perex, 120);
+						?></p>
+						<p><small><?php echo get_the_date('d. m. Y').", autor: <strong>".get_the_author()."</strong>, kategorie: "; the_category(', ');?></small></p>
+						-->
+					</div>
+				</div>
+		
+		<?php endif; ?>
+
+		<?php if($i==3): ?>
+			
+				<div class="post-box">
+					
+					<div class="post-box-image"><a href="<?php the_permalink(); ?>"><img src="<?php echo sk_thumb(get_post_thumbnail_id($post->ID)); ?>" alt="<?php the_title(); ?>" class="img-responsive" /></a></div>
+					<div class="post-box-content">
+						<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+						<!--<p><?php
+						$perex = get_the_excerpt();
+						echo short_text($perex, 120);
+						?></p>
+						<p><small><?php echo get_the_date('d. m. Y').", autor: <strong>".get_the_author()."</strong>, kategorie: "; the_category(', ');?></small></p>
+						-->
+					</div>
+				</div>
+			</div>
+		
+		<?php endif; ?>
+			
+	<?php endwhile;?>
+
 	<?php endif; ?>
 
+</div>
 
+
+<div class="row row-topm">
+	<div class="col-md-6">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h3 class="panel-title"><i class="icon-sort-by-attributes-alt"></i> Nejnovější články</h3>
+			</div>
+			
+			<div class="panel-body">
+				<?php query_posts(array('posts_per_page' => 4, 'category__not_in' => array(3,9))); ?>
+				<?php while(have_posts()) : the_post(); ?>
+					<div class="media">
+						<a class="pull-left" href="<?php the_permalink(); ?>">
+							<img src="<?php echo sk_thumb(get_post_thumbnail_id($post->ID), 64, 64); ?>" class="media-object" alt="<?php the_title(); ?>" />
+						</a>
+						<div class="media-body">
+							<h5 class="media-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+							<p><?php echo short_text(get_the_excerpt()); ?></p>
+							<p><small><?php echo get_the_date('d. m. Y').", autor: <strong>".get_the_author()."</strong>, kategorie: "; the_category(', ');?></small></p>
+						</div>
+							
+					</div>
+				<?php endwhile;?>
+				
+			</div>
+			
+			<div class="panel-footer">
+				<a href="#" class="btn btn-primary">Další články</a>
+			</div>
+		</div>
 	</div>
+	
+	<div class="col-md-6">
+			<?php get_template_part('includes/social-links'); ?>
+
+		<div class="panel panel-danger row-topm">
+			<div class="panel-heading"><h3 class="panel-title"><i class="icon-play-circle"></i> Video</h3></div>
+			<div class="panel-body">
+
+				<div class="row">
+					<?php query_posts(array('posts_per_page' => 4, 'category__in' => 9)); ?>
+					<?php
+						$i=0;
+						while(have_posts()) : the_post(); ?>
+
+						<?php
+							if($i==2) {
+								echo '</div><div class="row row-topm">';
+							}
+
+						 ?>
+						 
+						<div class="col-md-6">
+							<div class="post-box">
+								<div class="post-box-image"><a href="<?php the_permalink(); ?>"><img src="<?php echo sk_thumb(get_post_thumbnail_id($post->ID), 375, 275); ?>" alt="<?php the_title(); ?>" class="img-responsive" /></a></div>
+								<div class="post-box-content">
+									<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+								</div>
+							</div>
+						</div>
+
+						<?php
+							if($i==2) $i=0;
+							$i++;
+						?>
+					
+					<?php endwhile;?>
+				</div>
+				
+			</div>
+			<div class="panel-footer">
+				<a href="#" class="btn btn-danger">Další videa</a>
+			</div>
+		</div>
+
+		<div class="panel panel-warning">
+			<div class="panel-heading">
+				<h3 class="panel-title"><i class="icon-time"></i> Bleskovky</h3>
+			</div>
+			
+			<div class="panel-body">
+				<?php query_posts(array('posts_per_page' => 4, 'category__in' => 3)); ?>
+				<?php while(have_posts()) : the_post(); ?>
+					<div class="media">
+						<a class="pull-left" href="<?php the_permalink(); ?>">
+							<img src="<?php echo sk_thumb(get_post_thumbnail_id($post->ID), 32, 32); ?>" class="media-object" alt="<?php the_title(); ?>" />
+						</a>
+						<div class="media-body">
+							<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+							<!--<p><?php echo short_text(get_the_excerpt()); ?></p>
+							<p><small><?php echo get_the_date('d. m. Y').", autor: <strong>".get_the_author()."</strong>, kategorie: "; the_category(', ');?></small></p>
+							-->
+						</div>
+							
+					</div>
+				<?php endwhile;?>
+				
+			</div>
+			
+			<div class="panel-footer">
+				<a href="#" class="btn btn-warning">Další bleskovky</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
 	<!--								/*get_permalink(),
 									get_the_date( 'c' ),
 									get_the_date(),
 									get_author_posts_url( get_the_author_meta( 'ID' ) ),
 									sprintf( esc_attr__( 'View all posts by %s', 'themename' ), get_the_author() ),
-		-->							
+							
 	
 	<div class="col-md-4">
-		<h2>Nejnovější</h2>
+		
+		<div class="panel panel-default">
+		<h2>Nejnovější články</h2>
 		<?php query_posts('posts_per_page=5'); ?>
 		<?php while(have_posts()) : the_post(); ?>
 			<div class="media">
@@ -58,14 +207,13 @@
 				</a>
 				<div class="media-body">
 					<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
-					<p>
-						
-						<?php echo get_the_author(); ?>
-					</p>
+					<p><?php echo short_text(get_the_excerpt(),80); ?></p>
+					<p><small><?php echo get_the_date('d. m. Y').", autor: <strong>".get_the_author()."</strong>, kategorie: "; the_category(', ');?></small></p>
 				</div>
 					
 			</div>
 		<?php endwhile;?>
+		</div>
 	</div>
 	</div>
 	
@@ -77,5 +225,5 @@
 					<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
 			</div>
 		<?php endwhile;?>
-	</div>
-</div>
+	</div>-->	
+</div>	

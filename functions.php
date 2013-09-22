@@ -62,10 +62,10 @@ function sk_widget_sidebar() {
 	register_sidebar( array(
 		'name' => 'Sidebar',
 		'id' => 'sk_sidebar',
-		'before_widget' => '<div>',
-		'after_widget' => '</div>',
-		'before_title' => '<h3>',
-		'after_title' => '</h3>',
+		'before_widget' => '<div class="panel panel-default row-topm">',
+		'after_widget' => '</div></div>',
+		'before_title' => '<div class="panel-heading"><h3 class="panel-title">',
+		'after_title' => '</h3></div><div class="panel-body">',
 	) );
 }
 add_action('widgets_init', 'sk_widget_sidebar');
