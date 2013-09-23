@@ -26,10 +26,19 @@ h1, h2,h3, h4, h5, h6 {
     font-weight:bold;
 }
 h1 {
-	color:#2d6206;
+	color:#c00;
 }
 h2 {
 	color:#666;
+}
+h3 {
+	color:#428bca;
+}
+h4 {
+	color:#888;
+}
+#logo {
+	padding-top:15px;
 }
 .btn-facebook {background:#3c5a98;}
 .btn-twitter {background:#00abf0;}
@@ -39,6 +48,9 @@ h2 {
 .btn-mail {background:#897861;}
 .btn-social {
 	color:#fff;
+}
+img.aligncenter {
+	margin:15px auto !important;
 }
 .btn-social:hover {
 	color:#000;
@@ -121,11 +133,6 @@ padding:15px;
 .post-info-item {
 	margin-right:15px;
 }
-
-.reklama {
-	background:#fc0;
-}
-
 #post-side {
 	color:#888;
 }
@@ -147,7 +154,7 @@ padding:15px;
 	padding-top:30px;
 }
 .post-side-link {
-	padding-top:15px;
+	padding-top:6px;
 	clear:both;
 }
 #post-social-more {
@@ -162,4 +169,13 @@ padding:15px;
 }
 #post-social-less-link:hover i.icon, #post-social-more-link:hover i.icon {
 	color:#333;
+}
+.badge-blue {
+	background: #428bca;
+}
+.badge-black {
+	background: #333;
+}
+.reklama {
+	padding-bottom:15px;
 }

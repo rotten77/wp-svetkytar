@@ -80,8 +80,13 @@
 
 </div>
 
+<div class="row">
+	<div class="col-md-12 text-center">
+		<?php echo file_get_contents(dirname(__FILE__) . "./../reklamy/index.html"); ?>
+	</div>
+</div>
 
-<div class="row row-topm">
+<div class="row">
 	<div class="col-md-6">
 		<div class="panel panel-info">
 			<div class="panel-heading">
@@ -107,7 +112,7 @@
 			</div>
 			
 			<div class="panel-footer">
-				<a href="#" class="btn btn-primary"><i class="icon-arrow-right"></i>Další články</a>
+				<a href="#" class="btn btn-primary"><i class="icon-arrow-right"></i> Další články</a>
 			</div>
 		</div>
 	</div>
@@ -186,11 +191,7 @@
 	</div>
 </div>
 
-<div class="row">
-	<div class="col-md-12 text-center">
-		<div class="reklama">ADD</div>
-	</div>
-</div>
+
 
 	<!--								/*get_permalink(),
 									get_the_date( 'c' ),

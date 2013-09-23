@@ -8,11 +8,13 @@ add_filter('excerpt_more', 'new_excerpt_more');
 function reklamy_obsah($content) {
 	$content = str_replace("<p>&nbsp;</p>", "", $content);
 
+	$reklama_clanek = file_get_contents(dirname(__FILE__) . "./reklamy/clanek.html");
+
 	if(preg_match("/\[reklama\]/", $content)) {
 		$content = str_replace("<p>[reklama]</p>", "[reklama]", $content);
-		$content = str_replace("[reklama]", '<div class="reklama">ADD</div>', $content);
+		$content = str_replace("[reklama]", $reklama_clanek, $content);
 	} else {
-		$content.='<div class="reklama">ADD</div>';
+		$content.= $reklama_clanek;
 	}
 	return $content;
 }

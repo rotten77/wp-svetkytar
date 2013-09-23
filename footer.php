@@ -3,7 +3,9 @@
 	<div class="row">
 		<div class="col-md-4">dfs</div>
 		<div class="col-md-4">dfs</div>
-		<div class="col-md-4"><div class="reklama">ADD</div></div>
+		<div class="col-md-4">
+			<?php echo file_get_contents(dirname(__FILE__) . "./reklamy/paticka.html"); ?>
+		</div>
 	</div>
 </div>
 <div class="container" id="footer">
@@ -56,8 +58,9 @@ $(function(){
 			</div>
 			
 			<div class="modal-body">
-				<a class="twitter-timeline" href="https://twitter.com/svetkytar" data-widget-id="382046226255867904">Tweets by @svetkytar</a>
-				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/svetkytar" data-widget-id="382046226255867904">Tweets by @svetkytar</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
 			</div>
 			
 			<div class="modal-footer">
@@ -120,7 +123,6 @@ $(function(){
 
 <!-- Umístěte tuto značku na místo, kde se má widget tlačítko +1 zobrazit. -->
 
-
 <!-- Umístěte tuto značku za poslední značku tlačítko +1. -->
 <script type="text/javascript">
   window.___gcfg = {lang: 'cs'};
@@ -136,12 +138,11 @@ $(function(){
 var disqus_shortname = 'svetkytar'; // required: replace example with your forum shortname
 
 /* * * DON'T EDIT BELOW THIS LINE * * */
-(function () {
-var s = document.createElement('script'); s.async = true;
-s.type = 'text/javascript';
-s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
 </script>
 	</body>
 </html>

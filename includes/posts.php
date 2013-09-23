@@ -31,7 +31,7 @@
 
 			if($postCount==3) {
 				$nextClass=" row-topm";
-				echo '<div class="reklama">ADD</div>';
+				echo file_get_contents(dirname(__FILE__) . "./../reklamy/clanek.html");
 				$reklama = true;
 			}
 		?>
@@ -60,8 +60,7 @@
 
 		<?php
 			if(!$reklama) {
-
-				echo '<div class="reklama">ADD</div>';
+				echo file_get_contents(dirname(__FILE__) . "./../reklamy/clanek.html");
 				$reklama = true;
 			}
 		?>
