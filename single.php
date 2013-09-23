@@ -47,7 +47,7 @@
 
 
 						<div class="post-side-link">
-							<a href="#" class="btn btn-lg btn-social btn-mail"><span class="icon-envelope"></span></a>
+							<a href="mailto:?subject=<?php the_title(); ?>&amp;body=<?php the_title(); ?> - <?php the_permalink(); ?>" class="btn btn-lg btn-social btn-mail"><span class="icon-envelope"></span></a>
 						</div>
 
 						<div class="post-side-link">
@@ -136,27 +136,4 @@ $(window).scroll(function()
 
 });
 });
-</script>
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/cs_CZ/all.js#xfbml=1&appId=283665458354693";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-<!-- Umístěte tuto značku na místo, kde se má widget tlačítko +1 zobrazit. -->
-
-
-<!-- Umístěte tuto značku za poslední značku tlačítko +1. -->
-<script type="text/javascript">
-  window.___gcfg = {lang: 'cs'};
-
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/plusone.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
 </script>
