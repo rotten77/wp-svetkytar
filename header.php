@@ -18,7 +18,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-4"><a href="<?php bloginfo('url');?>/"><img src="<?php echo bloginfo('stylesheet_directory'); ?>/img/svet-kytar.png" alt="Svět kytar"></a></div>
-		<div class="col-md-8">REKLAMA</div>
+		<div class="col-md-8"><div class="reklama">ADD</div></div>
 	</div>
 </div>
 </div>

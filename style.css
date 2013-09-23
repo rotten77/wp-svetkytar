@@ -25,6 +25,12 @@ h1, h2,h3, h4, h5, h6 {
     font-family: 'Open Sans Condensed', sans-serif !important;
     font-weight:bold;
 }
+h1 {
+	color:#2d6206;
+}
+h2 {
+	color:#666;
+}
 .btn-facebook {background:#3c5a98;}
 .btn-twitter {background:#00abf0;}
 .btn-google-plus {background:#dd4c39;}
@@ -70,4 +76,90 @@ padding:15px;
 }
 #header {
 	padding:15px 0;
+}
+
+#bottom {
+	background:#333;
+	-webkit-box-shadow: inset 0px 1px 10px  rgba(0, 0, 0, 1);
+	box-shadow: inset 0px 1px 10px  rgba(0, 0, 0, 1);
+	color:#ddd;
+	padding-top:15px;
+}
+#footer {
+	margin-top:15px;
+	padding-top:15px;
+	border-top:1px solid #222;
+	color:#888;
+}
+#footer a, #footer a:hover, #footer a:visited {
+	color:#aaa;
+}
+
+.video-container {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 30px;
+	height: 0;
+	overflow: hidden;
+	margin-bottom:30px;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.post-info {
+	color:#888;
+	font-size:0.8em;
+}
+.post-info-item {
+	margin-right:15px;
+}
+
+.reklama {
+	background:#fc0;
+}
+
+#post-side {
+	color:#888;
+}
+#post-side p {
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+#post-side .icon {
+	font-size:3em;
+	color:#aaa;
+}
+.post-side-margin {
+	margin-top:70px;
+}
+.post-side-floating {
+	position: fixed;
+	top:0;
+}
+#post-side-float {
+	padding-top:30px;
+}
+.post-side-link {
+	padding-top:15px;
+	clear:both;
+}
+#post-social-more {
+	display:none;
+}
+
+#post-social-less-link i.icon, #post-social-more-link i.icon {
+	color:#c5c5c5;
+}
+#post-social-less-link:hover, #post-social-more-link:hover {
+	text-decoration: none;
+}
+#post-social-less-link:hover i.icon, #post-social-more-link:hover i.icon {
+	color:#333;
 }

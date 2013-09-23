@@ -5,6 +5,23 @@ add_theme_support('menus');
 function new_excerpt_more($more) {return ' &hellip;';}
 add_filter('excerpt_more', 'new_excerpt_more');
 
+function reklamy_obsah($content) {
+	$content = str_replace("<p>&nbsp;</p>", "", $content);
+
+	if(preg_match("/\[reklama\]/", $content)) {
+		$content = str_replace("<p>[reklama]</p>", "[reklama]", $content);
+		$content = str_replace("[reklama]", '<div class="reklama">ADD</div>', $content);
+	} else {
+		$content.='<div class="reklama">ADD</div>';
+	}
+	return $content;
+}
+add_filter('the_content', reklamy_obsah);
+
+add_filter('embed_oembed_html', 'my_embed_oembed_html', 99, 4);
+function my_embed_oembed_html($html, $url, $attr, $post_id) {
+  return '<div class="video-container">' . $html . '</div>';
+}
 
 
 	function print_r2($array) {

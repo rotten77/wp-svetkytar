@@ -28,7 +28,7 @@
 						// $perex = short_text($perex);
 						echo $perex;
 						?></p>
-						<p><small><?php echo get_the_date('d. m. Y').", autor: <strong>".get_the_author()."</strong>, kategorie: "; the_category(', ');?></small></p>
+						<p class="post-info"><?php get_template_part('includes/post-info'); ?></p>
 					</div>
 				</div>
 			</div>
@@ -98,7 +98,7 @@
 						<div class="media-body">
 							<h5 class="media-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
 							<p><?php echo short_text(get_the_excerpt()); ?></p>
-							<p><small><?php echo get_the_date('d. m. Y').", autor: <strong>".get_the_author()."</strong>, kategorie: "; the_category(', ');?></small></p>
+							<p class="post-info"><?php get_template_part('includes/post-info'); ?></p>
 						</div>
 							
 					</div>
@@ -107,7 +107,7 @@
 			</div>
 			
 			<div class="panel-footer">
-				<a href="#" class="btn btn-primary">Další články</a>
+				<a href="#" class="btn btn-primary"><i class="icon-arrow-right"></i>Další články</a>
 			</div>
 		</div>
 	</div>
@@ -116,7 +116,7 @@
 			<?php get_template_part('includes/social-links'); ?>
 
 		<div class="panel panel-danger row-topm">
-			<div class="panel-heading"><h3 class="panel-title"><i class="icon-play-circle"></i> Video</h3></div>
+			<div class="panel-heading"><h3 class="panel-title"><i class="icon-play-circle"></i> Videa</h3></div>
 			<div class="panel-body">
 
 				<div class="row">
@@ -151,7 +151,7 @@
 				
 			</div>
 			<div class="panel-footer">
-				<a href="#" class="btn btn-danger">Další videa</a>
+				<a href="#" class="btn btn-danger"><i class="icon-arrow-right"></i> Další videa</a>
 			</div>
 		</div>
 
@@ -180,13 +180,17 @@
 			</div>
 			
 			<div class="panel-footer">
-				<a href="#" class="btn btn-warning">Další bleskovky</a>
+				<a href="#" class="btn btn-warning"><i class="icon-arrow-right"></i> Další bleskovky</a>
 			</div>
 		</div>
 	</div>
 </div>
 
-
+<div class="row">
+	<div class="col-md-12 text-center">
+		<div class="reklama">ADD</div>
+	</div>
+</div>
 
 	<!--								/*get_permalink(),
 									get_the_date( 'c' ),

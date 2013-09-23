@@ -1,11 +1,12 @@
 <?php get_header(); ?>
-<?php $excludePosts = array(); ?>
 
 <?php
 if(is_home()) {
 	get_template_part('includes/homepage');
-} else {
-	get_template_part('includes/posts');
+} elseif(have_posts()) {
+	get_template_part('includes/posts');	
+} elseif(is_404()) {
+	get_template_part('includes/404');
 }
 
 ?>

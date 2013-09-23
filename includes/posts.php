@@ -1,3 +1,4 @@
+<?php $postCount=0; $reklama = false; ?>
 <div class="container">
 	<div class="row">
 		<div class="col-md-8">
@@ -21,11 +22,20 @@
 				<div><?php echo category_description(); ?></div>
 				<?php endif; ?>
 			<?php } else { ?>
-			dd
+
 			<?php } ?>
 				
-		<?php while(have_posts()) : the_post(); ?>
-		<div class="panel panel-default">
+		<?php while(have_posts()) : the_post();
+			$postCount++;
+			$nextClass="";
+
+			if($postCount==3) {
+				$nextClass=" row-topm";
+				echo '<div class="reklama">ADD</div>';
+				$reklama = true;
+			}
+		?>
+		<div class="panel panel-default<?php echo $nextClass; ?>">
 			<div class="panel-body">
 				<h3 class="media-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 				<div class="media">
@@ -41,16 +51,20 @@
 				</div>
 			</div>
 			
-			<div class="panel-footer">
-				<?php
-				$cats = get_the_category();
-				print_r2($cats);
-				?>
-				<small><?php echo get_the_date('d. m. Y').", autor: <strong>".get_the_author()."</strong>, kategorie: "; the_category(', ');?></small>
+			<div class="panel-footer post-info">
+				<?php get_template_part('includes/post-info'); ?>
 			</div>
 				
 		</div>
 		<?php endwhile;?>
+
+		<?php
+			if(!$reklama) {
+
+				echo '<div class="reklama">ADD</div>';
+				$reklama = true;
+			}
+		?>
 
 
 	<ul class="pager">
