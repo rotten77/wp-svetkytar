@@ -11,6 +11,11 @@
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<?php // wp_enqueue_script("jquery"); ?>
+
+<link rel="stylesheet" type="text/css" href="<?php echo bloginfo('stylesheet_directory');?>/js/fancybox/jquery.fancybox.css?v=2.1.4" media="screen" />
+<link rel="stylesheet" type="text/css" href="<?php echo bloginfo('stylesheet_directory');?>/js/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
+<link rel="stylesheet" type="text/css" href="<?php echo bloginfo('stylesheet_directory');?>/js/fancybox/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
+
 		<?php wp_head(); ?>
 </head>
 <body>

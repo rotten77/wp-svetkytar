@@ -137,7 +137,7 @@ padding:15px;
 	color:#888;
 }
 #post-side p {
-	font-family: 'Open Sans Condensed', sans-serif;
+	/*font-family: 'Open Sans Condensed', sans-serif;*/
 }
 #post-side .icon {
 	font-size:3em;
@@ -178,4 +178,21 @@ padding:15px;
 }
 .reklama {
 	padding-bottom:15px;
+}
+
+.gallery-wrap .gallery-item {
+	float:left;
+	border:5px solid #c5c5c5;
+	margin:0 5px 5px 0;
+}
+.gallery-wrap .gallery-item.active, .gallery-wrap .gallery-item:hover {
+	border-color:#333;
+}
+.gallery-wrap .gallery-medium {
+	margin:0 auto;
+}
+
+.text-center img.img-responsive {
+	text-align:center;
+	margin: 0 auto;
 }

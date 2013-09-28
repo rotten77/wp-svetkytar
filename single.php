@@ -79,7 +79,7 @@
 		<div class="col-md-7">
 			<div id="content">
 			<h1><?php the_title(); ?></h1>
-
+			
 			<?php echo file_get_contents(dirname(__FILE__) . "./reklamy/clanek.html"); ?>
 			
 			<?php
@@ -195,6 +195,11 @@
 </div>
 <?php get_footer(); ?>
 
+<script type="text/javascript" src="<?php echo bloginfo('stylesheet_directory');?>/js/fancybox/jquery.fancybox.js?v=2.1.4"></script>
+<script type="text/javascript" src="<?php echo bloginfo('stylesheet_directory');?>/js/fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="<?php echo bloginfo('stylesheet_directory');?>/js/fancybox/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+<script type="text/javascript" src="<?php echo bloginfo('stylesheet_directory');?>/js/fancybox/helpers/jquery.fancybox-media.js?v=1.0.5"></script>
+
 <script>
 $(function(){
 	// $('#post-social-more').hide();
@@ -212,6 +217,45 @@ $(function(){
 
 <script>
 $(function(){
+$('a[rel^="lightbox"]').fancybox();
+
+// preload
+$('.gallery-item').each(function(){
+	(new Image()).src = $(this).data("medium");
+});
+
+$('.gallery-item').click(function(){
+	// parametry vybraného obrázku
+	var selector = $(this).attr("rel").replace("gallery[","").replace("]", "");
+	var big = $(this).attr("href");
+	var medium = $(this).data("medium");
+
+	// html vybraného obrázku
+	var html = "";
+	$(this).parent().children('.gallery-item').each(function(){
+		if(big==$(this).attr("href")) html+='<a href="'+$(this).attr("href")+'" title="'+$(this).attr("title")+'" rel="lightbox['+selector+']"><img src="'+medium+'" /></a>';
+		else html+='<a href="'+$(this).attr("href")+'" title="'+$(this).attr("title")+'" rel="lightbox['+selector+']" style="display:none;">[nahled]</a>';
+	});
+	$('#'+selector+' .gallery-item').fancybox();
+	// $(this).parent().children('.gallery-item')
+	$('#gallery-preview-'+selector).html(html);
+
+	// aktivní náhled
+	$(this).parent().children('.gallery-item').removeClass("active");
+	$(this).addClass("active");
+	return false;
+});
+$('.gallery-wrap').each(function(){
+	$(this).children('.gallery-item:first').click();
+}); 
+
+// $('.gallery-medium').click(function(){
+// 	var index = $(this).data("gallery-index");
+// 	var selector = $(this).data("gallery-id");
+// 	$('#'+selector).fancybox();
+// 	return false;
+// });
+
   var $top1= $('#post-side-float').offset().top;   
   var $mid1 =  Math.floor($(window).height() / 2);
 $(window).scroll(function()

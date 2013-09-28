@@ -95,11 +95,14 @@
 			
 			<div class="panel-body">
 				<?php query_posts(array('posts_per_page' => 4, 'category__not_in' => array(3,9))); ?>
-				<?php while(have_posts()) : the_post(); ?>
+				<?php while(have_posts()) : the_post();
+				 ?>
 					<div class="media">
+						<?php if(get_post_thumbnail_id()): ?>
 						<a class="pull-left" href="<?php the_permalink(); ?>">
 							<img src="<?php echo sk_thumb(get_post_thumbnail_id($post->ID), 64, 64); ?>" class="media-object" alt="<?php the_title(); ?>" />
 						</a>
+						<?php endif; ?>
 						<div class="media-body">
 							<h5 class="media-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
 							<p><?php echo short_text(get_the_excerpt()); ?></p>
