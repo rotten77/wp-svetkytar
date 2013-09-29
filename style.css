@@ -25,18 +25,16 @@ h1, h2,h3, h4, h5, h6 {
     font-family: 'Open Sans Condensed', sans-serif !important;
     font-weight:bold;
 }
-h1 {
-	color:#c00;
+h1, a {
+	color:#359bed;
+}
+h1 strong {
+	color:#000;
 }
 h2 {
 	color:#666;
 }
-h3 {
-	color:#428bca;
-}
-h4 {
-	color:#888;
-}
+
 #logo {
 	padding-top:15px;
 }
@@ -146,9 +144,10 @@ padding:15px;
 .post-side-margin {
 	margin-top:70px;
 }
-.post-side-floating {
+.floating {
 	position: fixed;
 	top:0;
+	/*background:#fc0;*/
 }
 #post-side-float {
 	padding-top:30px;
@@ -195,4 +194,15 @@ padding:15px;
 .text-center img.img-responsive {
 	text-align:center;
 	margin: 0 auto;
+}
+.image-caption {
+	text-align: center;
+	font-style: italic;
+	color:#555;
+}
+#sidebar-float.floating {
+	padding-top:30px;
+}
+#sidebar-float .panel, #post-side-float {
+	background:rgba(255,255,255,0.75);
 }

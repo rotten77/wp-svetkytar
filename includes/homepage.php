@@ -115,7 +115,7 @@
 			</div>
 			
 			<div class="panel-footer">
-				<a href="#" class="btn btn-primary"><i class="icon-arrow-right"></i> Další články</a>
+				<a href="<?php echo LINK_BASE; ?>clanky" class="btn btn-primary"><i class="icon-arrow-right"></i> Další články</a>
 			</div>
 		</div>
 	</div>
@@ -142,7 +142,9 @@
 						 
 						<div class="col-md-6">
 							<div class="post-box">
+								<?php if(get_post_thumbnail_id()): ?>
 								<div class="post-box-image"><a href="<?php the_permalink(); ?>"><img src="<?php echo sk_thumb(get_post_thumbnail_id($post->ID), 375, 275); ?>" alt="<?php the_title(); ?>" class="img-responsive" /></a></div>
+								<?php endif; ?>
 								<div class="post-box-content">
 									<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
 								</div>
@@ -159,7 +161,7 @@
 				
 			</div>
 			<div class="panel-footer">
-				<a href="#" class="btn btn-danger"><i class="icon-arrow-right"></i> Další videa</a>
+				<a href="<?php echo LINK_BASE; ?>category/video" class="btn btn-danger"><i class="icon-arrow-right"></i> Další videa</a>
 			</div>
 		</div>
 
@@ -172,9 +174,11 @@
 				<?php query_posts(array('posts_per_page' => 4, 'category__in' => 3)); ?>
 				<?php while(have_posts()) : the_post(); ?>
 					<div class="media">
+						<?php if(get_post_thumbnail_id()): ?>
 						<a class="pull-left" href="<?php the_permalink(); ?>">
 							<img src="<?php echo sk_thumb(get_post_thumbnail_id($post->ID), 32, 32); ?>" class="media-object" alt="<?php the_title(); ?>" />
 						</a>
+						<?php endif; ?>
 						<div class="media-body">
 							<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
 							<!--<p><?php echo short_text(get_the_excerpt()); ?></p>
@@ -188,50 +192,9 @@
 			</div>
 			
 			<div class="panel-footer">
-				<a href="#" class="btn btn-warning"><i class="icon-arrow-right"></i> Další bleskovky</a>
+				<a href="<?php echo LINK_BASE; ?>category/bleskovky" class="btn btn-warning"><i class="icon-arrow-right"></i> Další bleskovky</a>
 			</div>
 		</div>
 	</div>
 </div>
-
-
-
-	<!--								/*get_permalink(),
-									get_the_date( 'c' ),
-									get_the_date(),
-									get_author_posts_url( get_the_author_meta( 'ID' ) ),
-									sprintf( esc_attr__( 'View all posts by %s', 'themename' ), get_the_author() ),
-							
-	
-	<div class="col-md-4">
-		
-		<div class="panel panel-default">
-		<h2>Nejnovější články</h2>
-		<?php query_posts('posts_per_page=5'); ?>
-		<?php while(have_posts()) : the_post(); ?>
-			<div class="media">
-				<a class="pull-left" href="<?php the_permalink(); ?>">
-					<img src="<?php echo sk_thumb(get_post_thumbnail_id($post->ID), 64, 64); ?>" class="media-object" alt="<?php the_title(); ?>" />
-				</a>
-				<div class="media-body">
-					<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
-					<p><?php echo short_text(get_the_excerpt(),80); ?></p>
-					<p><small><?php echo get_the_date('d. m. Y').", autor: <strong>".get_the_author()."</strong>, kategorie: "; the_category(', ');?></small></p>
-				</div>
-					
-			</div>
-		<?php endwhile;?>
-		</div>
-	</div>
-	</div>
-	
-	<div class="row">
-		<?php // query_posts(array('post__not_in' => $excludePosts)); ?>
-		<?php while(have_posts()) : the_post(); ?>
-			<div class="col-md-2">
-					<a href="<?php the_permalink(); ?>"><img src="<?php echo sk_thumb(get_post_thumbnail_id($post->ID), 240, 120); ?>" class="img-responsive" alt="<?php the_title(); ?>" /></a>
-					<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
-			</div>
-		<?php endwhile;?>
-	</div>-->	
-</div>	
+</div>

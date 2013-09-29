@@ -128,6 +128,8 @@
 
 					$pouzite[] = get_the_ID();
 
+					if(get_post_thumbnail_id()):
+
 					$pocet++; ?>
 					<div class="col-md-3">
 						<div class="post-box">
@@ -135,6 +137,7 @@
 								<a href="<?php the_permalink(); ?>">
 									<img src="<?php echo sk_thumb(get_post_thumbnail_id($post->ID), 195, 150); ?>" class="img-responsive" alt="<?php the_title(); ?>" />
 								</a>								
+								
 							</div>
 							
 							<div class="post-box-content">
@@ -144,6 +147,7 @@
 
 							
 					</div>
+					<?php endif; ?>
 				<?php endwhile;?>
 				<?php endif; ?>
 
@@ -158,13 +162,16 @@
 
 					$pouzite[] = get_the_ID();
 
+					if(get_post_thumbnail_id()):
+
 					$pocet++; ?>
 					<div class="col-md-3">
 						<div class="post-box">
 							<div class="post-box-image">
 								<a href="<?php the_permalink(); ?>">
 									<img src="<?php echo sk_thumb(get_post_thumbnail_id($post->ID), 195, 150); ?>" class="img-responsive" alt="<?php the_title(); ?>" />
-								</a>								
+								</a>
+								
 							</div>
 							
 							<div class="post-box-content">
@@ -174,6 +181,7 @@
 
 							
 					</div>
+					<?php endif; ?>
 				<?php endwhile;?>
 				<?php endif; ?>
 				
@@ -258,19 +266,19 @@ $('.gallery-wrap').each(function(){
 
   var $top1= $('#post-side-float').offset().top;   
   var $mid1 =  Math.floor($(window).height() / 2);
+
 $(window).scroll(function()
 {   
 
 		if ($(window).scrollTop()>$top1)   
 		{
-		 $('#post-side-float').addClass('post-side-floating');
+		 $('#post-side-float').addClass('floating');
 		}
 		else
 		{
-		 $('#post-side-float').removeClass('post-side-floating');
+		 $('#post-side-float').removeClass('floating');
 
 		 }
-
 });
 });
 </script>

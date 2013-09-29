@@ -144,5 +144,26 @@ var disqus_shortname = 'svetkytar'; // required: replace example with your forum
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
 </script>
+<script>
+$(function(){
+  var $top2= $('#sidebar-float').offset().top; 
+$(window).scroll(function()
+{   
+
+		if ($(window).scrollTop()>$top2)   
+		{
+			console.log($top2);
+		 $('#sidebar-float').addClass('floating');
+		}
+		else
+		{
+		 $('#sidebar-float').removeClass('floating');
+
+		 }
+
+});
+});
+</script>
+</script>
 	</body>
 </html>

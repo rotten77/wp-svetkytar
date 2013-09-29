@@ -6,25 +6,13 @@ define('LINK_BASE', '/svetkytar/');
 function new_excerpt_more($more) {return ' &hellip;';}
 add_filter('excerpt_more', 'new_excerpt_more');
 
-function reklamy_obsah($content) {
 
-	// odstranění prázdných odstavců
-	$content = str_replace("<p>&nbsp;</p>", "", $content);
-
-	// doplnění reklam
-	$reklama_clanek = file_get_contents(dirname(__FILE__) . "./reklamy/clanek.html");
-
-	if(preg_match("/\[reklama\]/", $content)) {
-		$content = str_replace("<p>[reklama]</p>", "[reklama]", $content);
-		$content = str_replace("[reklama]", $reklama_clanek, $content);
-	} else {
-		$content.= $reklama_clanek;
-	}
-
+function bootstrap_images($content) {
 	/**
 	 * Úprava HTML obrázků
 	 */
-
+	// $content = preg_replace('/<div([^>]*)id="attachment_[0-9]+"([^>]*)>(.+)<\/div>/', "$3", $content);
+	// $content = str_replace("<div id=\"attachment", "NAHRAD", $content);
 	$poradi = 0;
 
 	$return = "";
@@ -110,13 +98,60 @@ function reklamy_obsah($content) {
 	
 		$return.=($return=="" ? "" : "\n").($lineUpdate!="" ? $lineUpdate : $line);	
 	}
-	$content = $return;
+	return $return;
+}
 
+function reklamy_obsah($content) {
+
+	// odstranění prázdných odstavců
+	$content = str_replace("<p>&nbsp;</p>", "", $content);
+
+	// doplnění reklam
+	$reklama_clanek = file_get_contents(dirname(__FILE__) . "./reklamy/clanek.html");
+
+	if(preg_match("/\[reklama\]/", $content)) {
+		$content = str_replace("<p>[reklama]</p>", "[reklama]", $content);
+		$content = str_replace("[reklama]", $reklama_clanek, $content);
+	} else {
+		$content.= $reklama_clanek;
+	}
+	$content = bootstrap_images($content);
 
 	return $content;
 }
 
 add_filter('the_content', 'reklamy_obsah');
+
+
+function sk_caption_shortcode($current_html, $attr, $content) {
+	// New-style shortcode with the caption inside the shortcode with the link and image tags.
+	if ( ! isset( $attr['caption'] ) ) {
+		if ( preg_match( '#((?:<a [^>]+>\s*)?<img [^>]+>(?:\s*</a>)?)(.*)#is', $content, $matches ) ) {
+			$content = $matches[1];
+			$attr['caption'] = trim( $matches[2] );
+		}
+	}
+
+	// if ( $output != '' )
+	// 	return $output;
+
+	extract(shortcode_atts(array(
+		'id'	=> '',
+		'align'	=> 'alignnone',
+		'width'	=> '',
+		'caption' => ''
+	), $attr, 'caption'));
+
+	// if ( 1 > (int) $width || empty($caption) )
+	// 	return $content;
+
+	// if ( $id ) $id = 'id="' . esc_attr($id) . '" ';
+
+	// return '<div ' . $id . 'class="wp-caption ' . esc_attr($align) . '" style="width: ' . (10 + (int) $width) . 'px">'
+	return bootstrap_images($content) . "\n" . '<p class="image-caption">' . $caption . '</p>';
+}
+add_filter('img_caption_shortcode', 'sk_caption_shortcode', 10, 3);
+
 
 add_filter('embed_oembed_html', 'my_embed_oembed_html', 99, 4);
 function my_embed_oembed_html($html, $url, $attr, $post_id) {

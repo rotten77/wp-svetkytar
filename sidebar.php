@@ -39,3 +39,10 @@
 </div>
 </div>		
 <?php dynamic_sidebar('sk_sidebar'); ?>
+
+<div id="sidebar-float">
+<div class="panel panel-primary">
+	<div class="panel-heading"><h3 class="panel-title">Facebook</h3></div>
+	<div class="panel-body"><div class="fb-like-box" data-href="https://www.facebook.com/svetkytar" data-width="292" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div></div>
+</div>
+</div>
