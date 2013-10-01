@@ -1,10 +1,27 @@
 <div id="bottom" class="row-topm">
 <div class="container">
 	<div class="row">
-		<div class="col-md-4">dfs</div>
-		<div class="col-md-4">dfs</div>
 		<div class="col-md-4">
-			<?php echo file_get_contents(dirname(__FILE__) . "./reklamy/paticka.html"); ?>
+			<h4>Svět kytar</h4>
+			<p>Blog pro všechny kytaristy a hudební nadšence. Novinky z hudebního světa, především toho kytarového. Protože jeden svět nestačí&hellip;</p>
+			
+			<h4>Doporučujeme</h4>
+			<ul class="list-unstyled">
+				<li><a href="http://www.muzinovinky.cz/" target="_blank">MuziNovinky – aktuálně ze světa hudebních nástrojů</a></li>
+				<li><a href="http://nanastroj.cz/" target="_blank">Výuka kytary online</a></li>
+				<li><a href="http://www.obalynabedny.cz/" target="_blank">Obaly na bedny</a></li>
+			</ul>
+		</div>
+		<div class="col-md-4">
+			<h4>Buďte v obraze</h4>
+			
+			<a href="https://twitter.com/svetkytar" class="twitter-follow-button" data-show-count="false" data-lang="cs" data-size="large">Sledovat @svetkytar</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+			<div class="fb-like-box" data-href="https://www.facebook.com/svetkytar" data-width="328" data-colorscheme="dark" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>
+			<div class="g-page" data-href="//plus.google.com/109703172770122371790" data-layout="landscape" data-theme="dark" data-rel="publisher" data-width="328"></div>
+		</div>
+		<div class="col-md-4">
+			<?php echo file_get_contents(dirname(__FILE__) . "/reklamy/paticka.html"); ?>
 		</div>
 	</div>
 </div>
@@ -58,9 +75,8 @@ $(function(){
 			</div>
 			
 			<div class="modal-body">
-<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/svetkytar" data-widget-id="382046226255867904">Tweets by @svetkytar</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
+				<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/svetkytar" data-widget-id="382046226255867904">Tweets by @svetkytar</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 			</div>
 			
 			<div class="modal-footer">
@@ -143,27 +159,6 @@ var disqus_shortname = 'svetkytar'; // required: replace example with your forum
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-</script>
-<script>
-$(function(){
-  var $top2= $('#sidebar-float').offset().top; 
-$(window).scroll(function()
-{   
-
-		if ($(window).scrollTop()>$top2)   
-		{
-			console.log($top2);
-		 $('#sidebar-float').addClass('floating');
-		}
-		else
-		{
-		 $('#sidebar-float').removeClass('floating');
-
-		 }
-
-});
-});
-</script>
 </script>
 	</body>
 </html>

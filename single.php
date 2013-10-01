@@ -1,10 +1,22 @@
-<?php get_header(); ?>
-<?php the_post(); ?>
+<?php
+the_post();
+if(isset($_GET['fb_action_ids'])) {
+	header("HTTP/1.1 301 Moved Permanently");
+	header("Location: ".get_permalink());
+	header("Connection: close");
+}
+
+get_header(); ?>
+<?php 
+include_once dirname(__FILE__) . "/lib/Mobile_Detect.php";
+$mobileDetect = new Mobile_Detect();
+?>
 
 
 
 <div class="container">
 	<div class="row">
+		<?php if(!$mobileDetect->isMobile()): ?>
 		<div class="col-md-1">
 			<div id="post-side" class="text-center">
 				<p class="post-side-margin">
@@ -76,11 +88,13 @@
 				</div>
 			</div>
 		</div>
+		<?php endif; ?>
+		
 		<div class="col-md-7">
 			<div id="content">
 			<h1><?php the_title(); ?></h1>
 			
-			<?php echo file_get_contents(dirname(__FILE__) . "./reklamy/clanek.html"); ?>
+			<?php echo file_get_contents(dirname(__FILE__) . "/reklamy/clanek.html"); ?>
 			
 			<?php
 				the_content();
@@ -106,6 +120,11 @@
 			<h5>Mohlo by vás zajímat</h5>
 
 			<div class="row">
+				
+				<?php if($mobileDetect->isMobile()) { ?>
+				<div class="col-md-12"><ul>
+				<?php } ?>
+				
 				<?php
 				// echo get_the_ID();
 				$pouzite = array(get_the_ID());
@@ -131,6 +150,10 @@
 					if(get_post_thumbnail_id()):
 
 					$pocet++; ?>
+
+					<?php if($mobileDetect->isMobile()) { ?>
+						<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+					<?php } else { ?>
 					<div class="col-md-3">
 						<div class="post-box">
 							<div class="post-box-image">
@@ -144,9 +167,8 @@
 								<h6><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h6>
 							</div>
 						</div>
-
-							
 					</div>
+					<?php } ?>
 					<?php endif; ?>
 				<?php endwhile;?>
 				<?php endif; ?>
@@ -165,6 +187,10 @@
 					if(get_post_thumbnail_id()):
 
 					$pocet++; ?>
+					
+					<?php if($mobileDetect->isMobile()) { ?>
+						<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+					<?php } else { ?>
 					<div class="col-md-3">
 						<div class="post-box">
 							<div class="post-box-image">
@@ -178,12 +204,15 @@
 								<h6><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h6>
 							</div>
 						</div>
-
-							
 					</div>
+					<?php } ?>
 					<?php endif; ?>
 				<?php endwhile;?>
 				<?php endif; ?>
+
+				<?php if($mobileDetect->isMobile()) { ?>
+				</ul></div>
+				<?php } ?>
 				
 				
 			</div>
@@ -241,7 +270,7 @@ $('.gallery-item').click(function(){
 	// html vybraného obrázku
 	var html = "";
 	$(this).parent().children('.gallery-item').each(function(){
-		if(big==$(this).attr("href")) html+='<a href="'+$(this).attr("href")+'" title="'+$(this).attr("title")+'" rel="lightbox['+selector+']"><img src="'+medium+'" /></a>';
+		if(big==$(this).attr("href")) html+='<a href="'+$(this).attr("href")+'" title="'+$(this).attr("title")+'" rel="lightbox['+selector+']"><img src="'+medium+'" class="img-responsive" /></a>';
 		else html+='<a href="'+$(this).attr("href")+'" title="'+$(this).attr("title")+'" rel="lightbox['+selector+']" style="display:none;">[nahled]</a>';
 	});
 	$('#'+selector+' .gallery-item').fancybox();

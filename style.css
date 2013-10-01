@@ -92,17 +92,23 @@ padding:15px;
 	background:#333;
 	-webkit-box-shadow: inset 0px 1px 10px  rgba(0, 0, 0, 1);
 	box-shadow: inset 0px 1px 10px  rgba(0, 0, 0, 1);
-	color:#ddd;
+	color:#aaa;
 	padding-top:15px;
+}
+#bottom a, #bottom a:hover, #bottom a:visited {
+	color:#ddd;
+}
+#bottom h4 {
+	color:#ddd;
 }
 #footer {
 	margin-top:15px;
 	padding-top:15px;
 	border-top:1px solid #222;
-	color:#888;
+	color:#666;
 }
 #footer a, #footer a:hover, #footer a:visited {
-	color:#aaa;
+	color:#888;
 }
 
 .video-container {
@@ -151,6 +157,7 @@ padding:15px;
 }
 #post-side-float {
 	padding-top:30px;
+	background:rgba(255,255,255,0.75);
 }
 .post-side-link {
 	padding-top:6px;
@@ -200,9 +207,14 @@ padding:15px;
 	font-style: italic;
 	color:#555;
 }
-#sidebar-float.floating {
-	padding-top:30px;
+
+
+#fb-root {
+    display: none;
 }
-#sidebar-float .panel, #post-side-float {
-	background:rgba(255,255,255,0.75);
+
+/* To fill the container and nothing else */
+
+#sidebar-float .fb_iframe_widget, #sidebar-float .fb_iframe_widget span, #sidebar-float .fb_iframe_widget span iframe[style] {
+    width: 100% !important;
 }

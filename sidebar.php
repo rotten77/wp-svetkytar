@@ -10,7 +10,7 @@
 
 <div class="tab-content">
 <div class="tab-pane active" id="nejnovejsi">
-<?php query_posts(array('posts_per_page' => 4, 'category__not_in' => array(3,9))); ?>
+<?php query_posts(array('posts_per_page' => 4, 'category__not_in' => array(10,9))); ?>
 <?php while(have_posts()) : the_post(); ?>
 	<?php get_template_part('includes/post-sidebar'); ?>
 <?php endwhile;?>
@@ -24,14 +24,14 @@
 </div>
 
 <div class="tab-pane" id="video">
-<?php query_posts(array('posts_per_page' => 4, 'category__in' => 9)); ?>
+<?php query_posts(array('posts_per_page' => 4, 'category__in' => 10)); ?>
 <?php while(have_posts()) : the_post(); ?>
 	<?php get_template_part('includes/post-sidebar'); ?>
 <?php endwhile;?>
 </div>
 
 <div class="tab-pane" id="bleskovky">
-<?php query_posts(array('posts_per_page' => 4, 'category__in' => 3)); ?>
+<?php query_posts(array('posts_per_page' => 4, 'category__in' => 9)); ?>
 <?php while(have_posts()) : the_post(); ?>
 	<?php get_template_part('includes/post-sidebar'); ?>
 <?php endwhile;?>
@@ -43,6 +43,7 @@
 <div id="sidebar-float">
 <div class="panel panel-primary">
 	<div class="panel-heading"><h3 class="panel-title">Facebook</h3></div>
-	<div class="panel-body"><div class="fb-like-box" data-href="https://www.facebook.com/svetkytar" data-width="292" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div></div>
+	<div class="panel-body">
+		<div class="fb-like-box" data-href="https://www.facebook.com/svetkytar" data-width="328" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div></div>
 </div>
 </div>

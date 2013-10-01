@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-md-8">
 
-				<h1 class="archive-title"><?php
+				<h1><?php
 					if ( is_day() ) :
 						echo 'Archiv dne: <strong>'.get_the_date().'</strong>';
 						// printf( __( 'Daily Archives: %s', 'twentytwelve' ), '<span>' .  . '</span>'; );

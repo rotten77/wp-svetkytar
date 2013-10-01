@@ -1,7 +1,12 @@
 <?php
 add_theme_support('post-thumbnails');
 add_theme_support('menus');
-define('LINK_BASE', '/svetkytar/');
+if(preg_match("/localhost/", $_SERVER['SERVER_NAME'])) {
+	define('LINK_BASE', '/svetkytar/');
+} else {
+	define('LINK_BASE', '/');
+}
+
 
 function new_excerpt_more($more) {return ' &hellip;';}
 add_filter('excerpt_more', 'new_excerpt_more');
@@ -107,7 +112,7 @@ function reklamy_obsah($content) {
 	$content = str_replace("<p>&nbsp;</p>", "", $content);
 
 	// doplnění reklam
-	$reklama_clanek = file_get_contents(dirname(__FILE__) . "./reklamy/clanek.html");
+	$reklama_clanek = file_get_contents(dirname(__FILE__) . "/reklamy/clanek.html");
 
 	if(preg_match("/\[reklama\]/", $content)) {
 		$content = str_replace("<p>[reklama]</p>", "[reklama]", $content);
@@ -356,7 +361,7 @@ function sk_gallery($attr) {
 			$first = false;
 
 		if($firstImage=="") {
-			 $firstImage='LOADING...';
+			 $firstImage='<span><i class="icon-spinner icon-spin icon-large"></i></span>';
 			// $firstImage.='<a class="gallery-medium" data-gallery-index="0" data-gallery-id="'.$selector.'" href="'.($otocit ? sk_thumb($id, 768, 1024, false) : sk_thumb($id, 1024, 768, false)).'" title="'.$imageName.'"><img src="'.sk_thumb($id, 653, 653, false).'" alt="'.$imageName.'" class="img-responsive" /></a>';
 			// $firstImage.='</div>';
 		}

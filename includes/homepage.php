@@ -41,7 +41,7 @@
 			<div class="col-md-4">
 				<div class="post-box post-box-second">
 					
-					<div class="post-box-image"><a href="<?php the_permalink(); ?>"><img src="<?php echo sk_thumb(get_post_thumbnail_id($post->ID)); ?>" alt="<?php the_title(); ?>" class="img-responsive" /></a></div>
+					<div class="post-box-image"><a href="<?php the_permalink(); ?>"><img src="<?php echo sk_thumb(get_post_thumbnail_id($post->ID), 360, 199); ?>" alt="<?php the_title(); ?>" class="img-responsive" /></a></div>
 					<div class="post-box-content">
 						<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 						<!--<p><?php
@@ -59,7 +59,7 @@
 			
 				<div class="post-box">
 					
-					<div class="post-box-image"><a href="<?php the_permalink(); ?>"><img src="<?php echo sk_thumb(get_post_thumbnail_id($post->ID)); ?>" alt="<?php the_title(); ?>" class="img-responsive" /></a></div>
+					<div class="post-box-image"><a href="<?php the_permalink(); ?>"><img src="<?php echo sk_thumb(get_post_thumbnail_id($post->ID), 360, 199); ?>" alt="<?php the_title(); ?>" class="img-responsive" /></a></div>
 					<div class="post-box-content">
 						<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 						<!--<p><?php
@@ -82,7 +82,7 @@
 
 <div class="row">
 	<div class="col-md-12 text-center">
-		<?php echo file_get_contents(dirname(__FILE__) . "./../reklamy/index.html"); ?>
+		<?php echo file_get_contents(dirname(__FILE__) . "/../reklamy/index.html"); ?>
 	</div>
 </div>
 
@@ -94,7 +94,7 @@
 			</div>
 			
 			<div class="panel-body">
-				<?php query_posts(array('posts_per_page' => 4, 'category__not_in' => array(3,9))); ?>
+				<?php query_posts(array('posts_per_page' => 4, 'category__not_in' => array(10,9))); ?>
 				<?php while(have_posts()) : the_post();
 				 ?>
 					<div class="media">
@@ -128,7 +128,7 @@
 			<div class="panel-body">
 
 				<div class="row">
-					<?php query_posts(array('posts_per_page' => 4, 'category__in' => 9)); ?>
+					<?php query_posts(array('posts_per_page' => 4, 'category__in' => 10)); ?>
 					<?php
 						$i=0;
 						while(have_posts()) : the_post(); ?>
@@ -161,7 +161,7 @@
 				
 			</div>
 			<div class="panel-footer">
-				<a href="<?php echo LINK_BASE; ?>category/video" class="btn btn-danger"><i class="icon-arrow-right"></i> Další videa</a>
+				<a href="<?php echo LINK_BASE; ?>kategorie/video" class="btn btn-danger"><i class="icon-arrow-right"></i> Další videa</a>
 			</div>
 		</div>
 
@@ -171,7 +171,7 @@
 			</div>
 			
 			<div class="panel-body">
-				<?php query_posts(array('posts_per_page' => 4, 'category__in' => 3)); ?>
+				<?php query_posts(array('posts_per_page' => 4, 'category__in' => 9)); ?>
 				<?php while(have_posts()) : the_post(); ?>
 					<div class="media">
 						<?php if(get_post_thumbnail_id()): ?>
@@ -192,7 +192,7 @@
 			</div>
 			
 			<div class="panel-footer">
-				<a href="<?php echo LINK_BASE; ?>category/bleskovky" class="btn btn-warning"><i class="icon-arrow-right"></i> Další bleskovky</a>
+				<a href="<?php echo LINK_BASE; ?>kategorie/bleskovky" class="btn btn-warning"><i class="icon-arrow-right"></i> Další bleskovky</a>
 			</div>
 		</div>
 	</div>
